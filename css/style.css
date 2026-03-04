@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #5f6c7b, #2c3e50);
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    padding: 40px 60px;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.titulo {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 
+        0 0 3px #000,
+        0 0 3px #000,
+        0 2px 12px rgba(0,0,0,0.6);
+}
+
+.subtexto {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 1;
+    text-shadow: 
+        0 0 3px #000,
+        0 0 3px #000;
+}
+
+.btn-empezar {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: white;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.btn-empezar:hover {
+    transform: scale(1.1);
+    background: #dfe6e9;
+}
+
+.foto-fondo {
+    position: absolute;
+    /*width: 180px;
+    height: 180px;*/
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    z-index: 1;
+    opacity: 0;
+    animation: aparecer 1s ease forwards;
+    will-change: auto;
+}
+
+.luz {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fffacd;
+    opacity: 0.6;
+    animation: parpadeo 2s infinite alternate;
+    z-index: 0;
+}
+
+/* Contenedor invitación */
+.invitacion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    padding: 30px 50px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+    opacity: 0;
+    will-change: auto;
+}
+
+.invitacion.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    isolation: auto;
+}
+
+.texto-invitacion {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 
+        0 0 3px #000,
+        0 0 3px #000;
+}
+
+.botones-invitacion button {
+    padding: 12px 30px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, left 0.3s, top 0.3s;
+}
+
+.btn-si {
+    background: #2ecc71;
+    color: white;
+}
+.btn-si:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5);
+}
+
+.btn-no {
+    background: #e74c3c;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.btn-no:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
+}
+
+.texto-respuesta-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+.texto-respuesta {
+    font-size: 1.9rem;
+    color: white;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    padding: 30px 50px;
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* ✅ una sola sombra aquí */
+    text-shadow: 
+        0 0 3px #000,
+        0 0 3px #000;
+    width: 100%;
+}
+
+.container.animar {
+    animation: subirTexto 1s forwards;
+}
+
+.btn-empezar.fade-out {
+    animation: desaparecer 0.5s forwards;
+}
+
+.frambuesa {
+    position: fixed;
+    bottom: -80px;
+    z-index: 5;
+    animation: subirFrambuesa linear infinite;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    opacity: 0.1;
+}
+
+.confeti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    border-radius: 2px;
+    opacity: 0;
+    z-index: 9999;
+    pointer-events: none;
+    animation: caerConfeti linear forwards;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes caerConfeti {
+    0%   { transform: translateY(0) rotate(0deg);    opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes subirFrambuesa {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+        bottom: -80px;
+    }
+    10% { opacity: 0.85; }
+    50% {
+        opacity: 0.85;
+        transform: translateY(calc(-50vh)) rotate(60deg);
+    }
+    100% {
+        transform: translateY(calc(-100vh - 100px)) rotate(120deg);
+        opacity: 0;
+    }
+}
+
+@keyframes desaparecer {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes subirTexto {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-30vh); }
+}
+
+@keyframes parpadeo {
+    0%   { opacity: 0.3; transform: scale(0.5); }
+    50%  { opacity: 1;   transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(0.5); }
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
